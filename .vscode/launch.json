@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CoinGecko",
+            "request": "launch",
+            "mainClass": "CoinGecko"
+        }
+    ]
+}
