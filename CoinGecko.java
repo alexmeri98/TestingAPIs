@@ -12,6 +12,7 @@ public class CoinGecko {
     public static void main(String args[]){
         String response = "";
         try {
+
             URL url = new URL("https://api.coingecko.com/api/v3/coins/list");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -20,6 +21,7 @@ public class CoinGecko {
             con.setReadTimeout(5000);
 
             response = FullResponseBuilder.getFullResponse(con);
+            
         } catch(Exception e){
             e.printStackTrace();
         }
