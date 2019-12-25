@@ -3,13 +3,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URL;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
+import javax.json.JsonReader;
+import javax.json.JsonObject;
+import javax.json.Json;
 
 public class CoinGecko {
-    public static void main(String args[]){
+    public static void main(String[] args){
         String response = "";
         try {
 
@@ -21,12 +25,16 @@ public class CoinGecko {
             con.setReadTimeout(5000);
 
             response = FullResponseBuilder.getFullResponse(con);
-            
+
         } catch(Exception e){
             e.printStackTrace();
         }
 
-        System.out.println(response);
+        //System.out.println(response.toString());
+        
+        JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
+        JsonObject reply = jsonReader.readObject();
+        System.out.println(reply.toString());
 
     }
 
